@@ -56,7 +56,6 @@ export const Form = styled.form`
     input::placeholder {
         color: #ccc;
     }
-
     p {
         color: red;
     }

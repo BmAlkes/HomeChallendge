@@ -1,12 +1,13 @@
 import React from "react";
 import { BoxLogin, Divider, Form, LoginContainer, Title } from "./styled";
-import { Link } from "react-router-dom";
 import { BiLogIn } from "react-icons/bi";
-import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
 const loginFormSchema = z.object({
+    name: z.string(),
     email: z.string().email(),
     password: z
         .string()
@@ -16,7 +17,7 @@ const loginFormSchema = z.object({
 
 type LoginForm = z.infer<typeof loginFormSchema>;
 
-const Login = () => {
+const Register = () => {
     const {
         register,
         handleSubmit,
@@ -30,8 +31,13 @@ const Login = () => {
     return (
         <LoginContainer>
             <BoxLogin>
-                <Title>Login</Title>
+                <Title>Register User</Title>
                 <Form onSubmit={handleSubmit(handleNewLogin)}>
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        {...register("name")}
+                    />
                     <input
                         type="email"
                         placeholder="Email"
@@ -56,15 +62,15 @@ const Login = () => {
                         <p>{"Must be 5 or fewer characters long"}</p>
                     )}
                     <button type="submit">
-                        Enter
+                        Register
                         <BiLogIn size={24} />
                     </button>
                     <Divider />
-                    <Link to="/register">Register</Link>
+                    <Link to="/">Login Page</Link>
                 </Form>
             </BoxLogin>
         </LoginContainer>
     );
 };
 
-export default Login;
+export default Register;
