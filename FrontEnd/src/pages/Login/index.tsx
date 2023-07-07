@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BoxLogin, Divider, Form, LoginContainer, Title } from "./styled";
 import { Link } from "react-router-dom";
 import { BiLogIn } from "react-icons/bi";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AuthContext } from "../../context/auth";
 
 const loginFormSchema = z.object({
     email: z.string().email(),
@@ -23,9 +24,10 @@ const Login = () => {
         formState: { errors },
         setError,
     } = useForm<LoginForm>({ resolver: zodResolver(loginFormSchema) });
+    const { loginUser, isAuthenticated } = useContext(AuthContext);
 
     const handleNewLogin = (data: LoginForm) => {
-        console.log(data);
+        loginUser(data);
     };
     return (
         <LoginContainer>

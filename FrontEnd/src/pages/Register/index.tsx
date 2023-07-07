@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BoxLogin, Divider, Form, LoginContainer, Title } from "./styled";
 import { BiLogIn } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../context/auth";
 
 const loginFormSchema = z.object({
     name: z.string(),
@@ -18,6 +19,7 @@ const loginFormSchema = z.object({
 type LoginForm = z.infer<typeof loginFormSchema>;
 
 const Register = () => {
+    const { newUser } = useContext(AuthContext);
     const {
         register,
         handleSubmit,
@@ -26,7 +28,7 @@ const Register = () => {
     } = useForm<LoginForm>({ resolver: zodResolver(loginFormSchema) });
 
     const handleNewLogin = (data: LoginForm) => {
-        console.log(data);
+        newUser(data);
     };
     return (
         <LoginContainer>
@@ -66,7 +68,7 @@ const Register = () => {
                         <BiLogIn size={24} />
                     </button>
                     <Divider />
-                    <Link to="/">Login Page</Link>
+                    <Link to="/login">Login Page</Link>
                 </Form>
             </BoxLogin>
         </LoginContainer>
