@@ -50,7 +50,7 @@ router.post(
         const user = new UserModel({ name, email, password: passwordHash });
         try {
             await user.save();
-            res.status(200).send({ msg: "User Created", user, token });
+            res.status(200).send({ msg: "User Created", user });
         } catch (e) {
             console.log(e);
             return res.status(500).send(e.message);

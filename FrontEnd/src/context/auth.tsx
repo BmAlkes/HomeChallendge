@@ -62,9 +62,8 @@ export const AutContext: React.FC<UserContextProps> = ({ children }) => {
         setCurrentUser(null);
         navigate("/login");
     };
-    const newUser = async (data: any) => {
-        const { name, email, password } = data;
-        const response = await createUser(name, email, password);
+    const newUser = async (user: User) => {
+        const response = await createUser(user.name, user.email, user.password);
         navigate("/");
         return response;
     };
