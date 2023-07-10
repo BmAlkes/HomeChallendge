@@ -28,6 +28,7 @@ const Register = () => {
     } = useForm<LoginForm>({ resolver: zodResolver(loginFormSchema) });
 
     const handleNewLogin = (data: LoginForm) => {
+        console.log("create user");
         newUser(data);
     };
     return (

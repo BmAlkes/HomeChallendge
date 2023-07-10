@@ -3,39 +3,28 @@ import { BoxLogin, Divider, Form, LoginContainer, Title } from "./styled";
 import { Link, useNavigate } from "react-router-dom";
 import { BiLogIn } from "react-icons/bi";
 import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { AuthContext } from "../../context/auth";
-
-const loginFormSchema = z.object({
-    email: z.string().email(),
-    password: z
-        .string()
-        .max(15, { message: "Must be 5 or fewer characters long" })
-        .min(5, { message: "Must be 5 or more characters long" }),
-});
-
-type LoginForm = z.infer<typeof loginFormSchema>;
 
 const Login = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
-        setError,
-    } = useForm<LoginForm>({ resolver: zodResolver(loginFormSchema) });
+    } = useForm();
     const { loginUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleNewLogin = (data: LoginForm) => {
+    const newHandleLogin = (data: any) => {
+        console.log(data);
         loginUser(data);
         navigate("/");
     };
+
     return (
         <LoginContainer>
             <BoxLogin>
                 <Title>Login</Title>
-                <Form onSubmit={handleSubmit(handleNewLogin)}>
+                <Form onSubmit={handleSubmit(newHandleLogin)}>
                     <input
                         type="email"
                         placeholder="Email"

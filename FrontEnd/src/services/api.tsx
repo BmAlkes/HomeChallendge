@@ -15,3 +15,15 @@ export const createUser = async (
 ) => {
     return api.post("/auth/register", { name, email, password });
 };
+
+export const createNote = async (
+    title: string,
+    description: string,
+    created_by: string
+) => {
+    return api.post("/notes", { title, description, created_by });
+};
+
+export const getAllNotes = async () => {
+    return api.get("/notes");
+};

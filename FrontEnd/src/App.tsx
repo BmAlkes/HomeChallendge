@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useContext } from "react";
 import { AutContext, AuthContext } from "./context/auth";
+import { NoteContext, NoteContextComponent } from "./context/note";
 
 interface ReactProps {
     children: React.ReactElement;
@@ -20,7 +21,6 @@ interface ReactProps {
 function App() {
     const Private: React.FC<ReactProps> = ({ children }) => {
         const { isAutheticated, loading } = useContext(AuthContext);
-        console.log(isAutheticated);
         if (loading) {
             return <div className="loading">Loading...</div>;
         }
@@ -35,20 +35,22 @@ function App() {
         <>
             <BrowserRouter>
                 <AutContext>
-                    <Routes>
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route
-                            path="/"
-                            element={
-                                <Private>
-                                    <DefaultLayout />
-                                </Private>
-                            }
-                        >
-                            <Route path="/home" element={<Home />} />
-                        </Route>
-                    </Routes>
+                    <NoteContextComponent>
+                        <Routes>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route
+                                path="/"
+                                element={
+                                    <Private>
+                                        <DefaultLayout />
+                                    </Private>
+                                }
+                            >
+                                <Route path="/" element={<Home />} />
+                            </Route>
+                        </Routes>
+                    </NoteContextComponent>
                 </AutContext>
             </BrowserRouter>
         </>

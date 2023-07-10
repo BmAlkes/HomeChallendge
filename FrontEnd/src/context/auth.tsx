@@ -2,7 +2,6 @@ import React, { createContext, useEffect, useState } from "react";
 import { User } from "../@types/user";
 import { useNavigate } from "react-router-dom";
 import { createSession, api, createUser } from "../services/api";
-import { boolean } from "zod";
 
 interface IUserContext {
     currentUser: User | null;
