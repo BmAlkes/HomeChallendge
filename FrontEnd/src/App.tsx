@@ -18,13 +18,17 @@ interface ReactProps {
 }
 
 function App() {
-    const { isAutheticated } = useContext(AuthContext);
-    console.log(isAutheticated);
     const Private: React.FC<ReactProps> = ({ children }) => {
+        const { isAutheticated, loading } = useContext(AuthContext);
+        console.log(isAutheticated);
+        if (loading) {
+            return <div className="loading">Loading...</div>;
+        }
         if (!isAutheticated) {
             return <Navigate to="/login" />;
+        } else {
+            return children;
         }
-        return children;
     };
 
     return (

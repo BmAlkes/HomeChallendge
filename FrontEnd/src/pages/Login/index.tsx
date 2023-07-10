@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { BoxLogin, Divider, Form, LoginContainer, Title } from "./styled";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BiLogIn } from "react-icons/bi";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -24,10 +24,12 @@ const Login = () => {
         formState: { errors },
         setError,
     } = useForm<LoginForm>({ resolver: zodResolver(loginFormSchema) });
-    const { loginUser, isAuthenticated } = useContext(AuthContext);
+    const { loginUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleNewLogin = (data: LoginForm) => {
         loginUser(data);
+        navigate("/");
     };
     return (
         <LoginContainer>

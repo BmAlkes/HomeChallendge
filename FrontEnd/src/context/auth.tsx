@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { User } from "../@types/user";
 import { useNavigate } from "react-router-dom";
 import { createSession, api, createUser } from "../services/api";
+import { boolean } from "zod";
 
 interface IUserContext {
     currentUser: User | null;
@@ -35,15 +36,17 @@ export const AutContext: React.FC<UserContextProps> = ({ children }) => {
 
     useEffect(() => {
         const recoveredUser = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
         if (recoveredUser) {
             setCurrentUser(JSON.parse(recoveredUser));
+            api.defaults.headers.Authorization = `Bearer ${token}`;
         }
         setLoading(false);
     }, []);
 
     const loginUser = async (user: User) => {
         const response = await createSession(user.email, user.password);
-        console.log(response.data);
+
         const loggedUser = response.data.user;
         const token = response.data.token;
 
@@ -51,9 +54,8 @@ export const AutContext: React.FC<UserContextProps> = ({ children }) => {
         localStorage.setItem("token", token);
 
         api.defaults.headers.Authorization = `Bearer ${token}`;
-
-        setCurrentUser(loggedUser);
         navigate("/");
+        setCurrentUser(loggedUser);
     };
 
     const logoutUser = () => {
@@ -65,13 +67,12 @@ export const AutContext: React.FC<UserContextProps> = ({ children }) => {
     const newUser = async (user: User) => {
         const response = await createUser(user.name, user.email, user.password);
         navigate("/");
-        return response;
     };
     return (
         <AuthContext.Provider
             value={{
-                currentUser,
                 isAutheticated: !!currentUser,
+                currentUser,
                 loginUser,
                 logoutUser,
                 loading,

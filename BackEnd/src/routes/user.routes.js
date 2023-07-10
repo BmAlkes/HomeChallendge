@@ -38,6 +38,10 @@ router.post(
         const { name, email, password } = req.body;
 
         //validation
+
+        if (!name) {
+            return res.status(422).json({ message: "required name" });
+        }
         const userExist = await UserModel.findOne({ email });
 
         if (userExist) {
@@ -48,6 +52,7 @@ router.post(
         const passwordHash = await bcryptjs.hash(password, salt);
 
         const user = new UserModel({ name, email, password: passwordHash });
+
         try {
             await user.save();
             res.status(200).send({ msg: "User Created", user });
