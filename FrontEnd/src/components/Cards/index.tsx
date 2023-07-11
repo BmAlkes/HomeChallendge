@@ -1,20 +1,21 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Box, CardsComponent } from "./styles";
 import { NoteContext } from "../../context/note";
 import { FiDelete, FiEdit } from "react-icons/fi";
 import { AiOutlineCheck } from "react-icons/ai";
 import { format, parseISO } from "date-fns";
 import ptBr from "date-fns/locale/pt-BR";
+import { AuthContext } from "../../context/auth";
 
 const Cards = () => {
+    const { currentUser } = useContext(AuthContext);
     const { notes } = useContext(NoteContext);
     console.log();
 
-    const formatDate = (date: string) => {
-        return format(parseISO(date), "dd/MM/yyyy", {
-            locale: ptBr,
-        });
-    };
+    const notesByUser = notes?.filter((note) => {
+        return note.created_by === currentUser?._id;
+    });
+
     return (
         <CardsComponent>
             <Box>
@@ -28,8 +29,7 @@ const Cards = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {notes?.map((note) => {
-                            console.log(note.createdAt);
+                        {notesByUser?.map((note) => {
                             return (
                                 <tr key={note.id}>
                                     <td data-label="Title">{note.title}</td>

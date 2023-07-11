@@ -6,9 +6,13 @@ export const GlobalStyle = createGlobalStyle`
     padding:0;
     box-sizing: border-box;
 }
+html,
+body,
+#root {
+  height: 100%;
+}
 
 body{
-  
     -webkit-font-smoothing:antialiased;
   background-size: cover;
   background-repeat: no-repeat;
