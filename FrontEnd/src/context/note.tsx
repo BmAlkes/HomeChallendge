@@ -9,7 +9,16 @@ interface INoteContext {
 }
 
 export const NoteContext = createContext<INoteContext>({
-    notes: [{ created_by: "", description: "", title: "", id: "" }],
+    notes: [
+        {
+            created_by: "",
+            description: "",
+            title: "",
+            id: "",
+            createdAt: "",
+            isCompleted: false,
+        },
+    ],
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     notesCreation: () => {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -21,10 +30,11 @@ interface NoteContextProps {
 export const NoteContextComponent: React.FC<NoteContextProps> = ({
     children,
 }) => {
-    const [notes, setNotes] = useState<NotesItem>([]);
     useEffect(() => {
         getNotes();
     }, []);
+
+    const [notes, setNotes] = useState<NotesItem>([]);
 
     const notesCreation = async (note: Notes) => {
         const response = await createNote(

@@ -10,14 +10,16 @@ export const CardsComponent = styled.div`
     padding: 1rem;
 `;
 
-export const Box = styled.table`
-    border: 1px solid #ccc;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: collapse;
-
+export const Box = styled.div`
+    table {
+        border: 1px solid #ccc;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        color: ${(props) => props.theme.black};
+    }
     table caption {
         font-size: 1.5rem;
         margin: 0.5em 0 0.75em;
@@ -36,7 +38,7 @@ export const Box = styled.table`
 
     table th {
         font-size: 0.85em;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
     }
 

@@ -21,4 +21,16 @@ body,input,textarea,button{
 img{
     max-width: 100%;
 }
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+ul {
+  list-style: none;
+}
+button {
+  cursor: pointer;
+}
 `;
