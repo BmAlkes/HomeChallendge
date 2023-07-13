@@ -62,6 +62,18 @@ export const Box = styled.div`
         color: #fff;
     }
 
+    .done {
+        background-color: green;
+        padding: 8px;
+        border-radius: 6px;
+        color: #fff;
+    }
+    .notDone {
+        background-color: red;
+        padding: 8px;
+        border-radius: 6px;
+        color: #fff;
+    }
     @media screen and (max-width: 768px) {
         table {
             border: 0;

@@ -20,6 +20,8 @@ const Login = () => {
         navigate("/");
     };
 
+    console.log(errors?.password);
+
     return (
         <LoginContainer>
             <BoxLogin>
@@ -30,9 +32,9 @@ const Login = () => {
                         placeholder="Email"
                         {...register("email", { required: true })}
                     />
-                    {/* {errors?.email?.type === "invalid_string" && (
+                    {errors?.email?.type === "invalid_string" && (
                         <p>email is not valid</p>
-                    )} */}
+                    )}
                     <input
                         type="password"
                         placeholder="Your Password"
@@ -42,12 +44,13 @@ const Login = () => {
                             maxLength: 15,
                         })}
                     />
-                    {/* {errors?.password?.type === "too_small" && (
+                    {errors?.password?.type === "too_small" && (
                         <p>{"Must be 5 or more characters long"}</p>
                     )}
                     {errors?.password?.type === "too_big" && (
                         <p>{"Must be 5 or fewer characters long"}</p>
-                    )} */}
+                    )}
+
                     <button type="submit">
                         Enter
                         <BiLogIn size={24} />

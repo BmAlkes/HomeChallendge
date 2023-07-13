@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Notes } from "../@types/notes";
 
 export const api = axios.create({
     baseURL: "http://localhost:5000",
@@ -26,4 +27,11 @@ export const createNote = async (
 
 export const getAllNotes = async () => {
     return api.get("/notes");
+};
+export const doneNote = async (id: string, updateNote: Notes) => {
+    return api.patch(`/notes/${id}`, { isCompleted: updateNote });
+};
+
+export const deleteNote = async (id: string) => {
+    return api.delete(`/notes/${id}`);
 };
