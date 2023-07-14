@@ -63,6 +63,7 @@ const Cards = () => {
                                     <td data-label="#">
                                         <button
                                             className="action"
+                                            title="Done"
                                             style={{
                                                 background: "#0a8e0a",
                                             }}
@@ -72,7 +73,7 @@ const Cards = () => {
                                         >
                                             {
                                                 <AiOutlineCheck
-                                                    color="#FFF;"
+                                                    color="#FFF"
                                                     size={17}
                                                 />
                                             }
@@ -80,6 +81,7 @@ const Cards = () => {
                                         <Dialog.Root>
                                             <Dialog.Trigger asChild>
                                                 <button
+                                                    title="Edit"
                                                     className="action"
                                                     style={{
                                                         background: "#3583f6",
@@ -87,7 +89,7 @@ const Cards = () => {
                                                 >
                                                     {
                                                         <FiEdit
-                                                            color="#FFF;"
+                                                            color="#FFF"
                                                             size={17}
                                                         />
                                                     }
@@ -97,8 +99,9 @@ const Cards = () => {
                                         </Dialog.Root>
                                         <button
                                             className="action"
+                                            title="Delete"
                                             style={{
-                                                background: "#f6a935",
+                                                background: "#f64835",
                                             }}
                                             onClick={() => {
                                                 handleDelete(note._id);
@@ -106,7 +109,7 @@ const Cards = () => {
                                         >
                                             {
                                                 <FiDelete
-                                                    color="#FFF;"
+                                                    color="#FFF"
                                                     size={17}
                                                 />
                                             }

@@ -5,6 +5,7 @@ export const CreateCardComponent = styled.div`
         font-size: 2.4rem;
         letter-spacing: 0.3rem;
         margin: 5rem 0;
+        color: ${(props) => props.theme.primary};
     }
     form {
         display: flex;
@@ -16,11 +17,13 @@ export const CreateCardComponent = styled.div`
             display: flex;
             flex-direction: column;
             align-items: center;
+            color: ${(props) => props.theme.primary};
 
             input,
             textarea {
                 border: none;
                 width: 100%;
+                color: ${(props) => props.theme.black};
                 background-color: ${(props) => props.theme.white};
                 padding-right: 20px;
                 height: 50px;
