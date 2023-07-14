@@ -6,6 +6,8 @@ import { AiOutlineCheck } from "react-icons/ai";
 
 import { AuthContext } from "../../context/auth";
 import { Notes } from "../../@types/notes";
+import * as Dialog from "@radix-ui/react-dialog";
+import EditNotes from "../EditNotes";
 
 const Cards = () => {
     const { currentUser } = useContext(AuthContext);
@@ -34,7 +36,7 @@ const Cards = () => {
                             <th scope="col"> Title</th>
                             <th scope="col">Description</th>
                             <th scope="col">Status</th>
-                            <th scope="col">#</th>
+                            <th scope="col">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,14 +77,24 @@ const Cards = () => {
                                                 />
                                             }
                                         </button>
-                                        <button
-                                            className="action"
-                                            style={{
-                                                background: "#3583f6",
-                                            }}
-                                        >
-                                            {<FiEdit color="#FFF;" size={17} />}
-                                        </button>
+                                        <Dialog.Root>
+                                            <Dialog.Trigger asChild>
+                                                <button
+                                                    className="action"
+                                                    style={{
+                                                        background: "#3583f6",
+                                                    }}
+                                                >
+                                                    {
+                                                        <FiEdit
+                                                            color="#FFF;"
+                                                            size={17}
+                                                        />
+                                                    }
+                                                </button>
+                                            </Dialog.Trigger>
+                                            <EditNotes />
+                                        </Dialog.Root>
                                         <button
                                             className="action"
                                             style={{

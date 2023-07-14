@@ -71,6 +71,15 @@ export const NoteContextComponent: React.FC<NoteContextProps> = ({
         setNotes(notes.filter((note) => note._id !== id));
     };
 
+    const editNote = async (id: string, updateNote: Notes) => {
+        const response = await doneNote(id, updateNote);
+        console.log(response);
+        notes.map((note) =>
+            note._id === updateNote?._id ? { ...note, ...updateNote } : note
+        );
+        getNotes();
+    };
+
     return (
         <NoteContext.Provider
             value={{

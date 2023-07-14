@@ -35,3 +35,7 @@ export const doneNote = async (id: string, updateNote: Notes) => {
 export const deleteNote = async (id: string) => {
     return api.delete(`/notes/${id}`);
 };
+
+export const updateNote = async (id: string, updateNote: Notes) => {
+    return api.patch(`/notes/${id}`, { updateNote });
+};
