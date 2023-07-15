@@ -12,10 +12,12 @@ const NoteSchema = z.object({
     created_by: z.string(),
 });
 type NoteForm = z.infer<typeof NoteSchema>;
+
 const CreateCard = () => {
-    const { notesCreation, getNotes } = useContext(NoteContext);
+    const { notesCreation } = useContext(NoteContext);
     const { currentUser } = useContext(AuthContext);
-    const { _id } = currentUser;
+    console.log(currentUser);
+    const _id = currentUser?._id;
     const { register, handleSubmit, reset } = useForm<NoteForm>({
         resolver: zodResolver(NoteSchema),
     });

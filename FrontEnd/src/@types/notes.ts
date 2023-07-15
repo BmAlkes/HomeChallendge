@@ -2,9 +2,9 @@ export interface Notes {
     _id?: string;
     title: string;
     description: string;
-    isCompleted: boolean;
+    isCompleted?: boolean;
     created_by: string;
-    createdAt: string;
+    createdAt?: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

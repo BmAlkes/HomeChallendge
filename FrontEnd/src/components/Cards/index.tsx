@@ -18,12 +18,12 @@ const Cards = () => {
         return note.created_by === currentUser?._id;
     });
 
-    const handleDone = (id: string, isCompleted: boolean) => {
-        console.log(id, isCompleted);
-        changeStatus(id, !!isCompleted);
+    const handleDone = (_id: any, isCompleted: Notes) => {
+        console.log(_id, isCompleted);
+        changeStatus(_id, isCompleted);
     };
 
-    const handleDelete = (id: string) => {
+    const handleDelete = (id: any) => {
         deleteNoteById(id);
     };
 
@@ -68,7 +68,7 @@ const Cards = () => {
                                                 background: "#0a8e0a",
                                             }}
                                             onClick={() =>
-                                                handleDone(note._id, note)
+                                                handleDone(note?._id, note)
                                             }
                                         >
                                             {
@@ -95,7 +95,7 @@ const Cards = () => {
                                                     }
                                                 </button>
                                             </Dialog.Trigger>
-                                            <EditNotes />
+                                            <EditNotes id={note._id} />
                                         </Dialog.Root>
                                         <button
                                             className="action"
@@ -104,7 +104,7 @@ const Cards = () => {
                                                 background: "#f64835",
                                             }}
                                             onClick={() => {
-                                                handleDelete(note._id);
+                                                handleDelete(note?._id);
                                             }}
                                         >
                                             {
