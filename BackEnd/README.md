@@ -5,7 +5,7 @@
 
 <hr/>
 
-<h2>📚Functionalities/h2>
+<h2>📚Functionalities</h2>
 <p>Feature 1: back end system with connection to the mongo DB database, which creates, edits, deletes and updates notes</p>
   <p>Feature 2:creation of user and login, with password verification, JWT & Hash system </p>
   <hr/>
@@ -19,7 +19,7 @@ Technology</h3>
 <h2>🚀 Rodando o projeto</h2>
 <p>To run the repository it is necessary to clone it, issue the following command to start the project: </p>
 
-<git init and after npm run dev>
+`git init and after npm run dev`
 <hr/>
   
 <h3>🔜 future implementation</h3>
