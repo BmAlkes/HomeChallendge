@@ -19,7 +19,9 @@ Technology</h3>
 <h2>🚀 Rodando o projeto</h2>
 <p>To run the repository it is necessary to clone it, issue the following command to start the project: </p>
 
-`git init and after npm run dev`
+`git init` 
+and after
+`npm run dev`
 <hr/>
   
 <h3>🔜 future implementation</h3>
