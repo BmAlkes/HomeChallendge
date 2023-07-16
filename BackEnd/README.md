@@ -1,26 +1,34 @@
-<h2>🗄️ Exemplo de README.md</h2>
-<hr/>
-<h2>📝 Descrição</h2>
-<p>Escreva uma descrição do seu projeto</p>
+<h2>🗄️ README.md</h2>
+
+<h2>📝 Description</h2>
+<p>Back end created for Home assignment , with the intention of connecting to the front end and performing CRUD</p>
 
 <hr/>
 
-<h2>📚 Funcionalidades</h2>
-<p>Funcionalidade 1: O que essa funcionalidade faz?</p>
-<h3>🔧 Tecnologias utilizadas
-Tecnologia;</h3>
+<h2>📚Functionalities/h2>
+<p>Feature 1: back end system with connection to the mongo DB database, which creates, edits, deletes and updates notes</p>
+  <p>Feature 2:creation of user and login, with password verification, JWT & Hash system </p>
+  <hr/>
+<h3>🔧
+Technologies used
+Technology</h3>
+
+<p>Node, Express, MongoDb, mongoose, JWT, Cors </p>
 
 <hr/>
 <h2>🚀 Rodando o projeto</h2>
-<p>Para rodar o repositório é necessário clonar o mesmo, dar o seguinte comando para iniciar o projeto:</p>
+<p>To run the repository it is necessary to clone it, issue the following command to start the project: </p>
 
-<linha de comando>
-<h3>🔜 Implementação futura</h3>
-O que será implementado na próxima sprint?
+<git init and after npm run dev>
+<hr/>
+  
+<h3>🔜 future implementation</h3>
+There will be no new updates at the moment as it is a project developed with the intention of Home Assignment
   <hr/>
 <h3>  
 🤝 Colaboradores</h3>
   
-<img src="https://www.github.com/BmAlkes.png"/>
+<img src="https://www.github.com/BmAlkes.png" width="150px"/>
 BmAlkes
-<h2>🎯 Status do projeto</h2>
+<h2>🎯 Project Status</h2>
+<p>concluded</p>
